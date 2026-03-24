@@ -1,0 +1,13 @@
+services:
+    omnisearch:
+        container_name: omnisearch
+        network_mode: "pasta"
+        ports:
+            - "8087:8087/tcp"
+        volumes:
+            - ./omnisearch:/etc/omnisearch:U
+            - ./omnisearch_cache:/var/cache/omnisearch:U
+        restart: always
+        env_file:
+            - .env
+        build: .
