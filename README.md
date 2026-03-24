@@ -24,14 +24,6 @@ podman-compose build
 
 This should take less than a minute
 
-## Running
-
-Configure `compose.yml` and `.env` and run:
-
-```sh
-podman-compose up -d
-```
-
 ## Configuring
 
 While some configuration is available in `compose.yml` and `.env`, most config files and directories are found in the `omnisearch` dir.
@@ -54,6 +46,14 @@ podman unshare
 ```properties
 # This controls the text used in all the labels, as well as the tab name
 APP_NAME=OmniSearch
+```
+
+## Running
+
+Configure `compose.yml` and `.env` and run:
+
+```sh
+podman-compose up -d
 ```
 
 ## Stopping
