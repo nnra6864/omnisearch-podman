@@ -1,0 +1,8 @@
+.env
+.git
+.gitignore
+Containerfile
+LICENSE
+README.md
+omnisearch/
+omnisearch_cache/
