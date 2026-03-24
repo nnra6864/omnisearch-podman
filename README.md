@@ -41,7 +41,7 @@ Keep in mind that all edits will require sudo, or simply switching to the podman
 podman unshare
 ```
 
-_When done, press ctrl+d to return to the previous user_
+_When done, press `ctrl+d` to return to the previous user_
 
 ### Env
 
