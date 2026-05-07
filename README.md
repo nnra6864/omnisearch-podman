@@ -26,11 +26,11 @@ This should take less than a minute
 
 ## Configuring
 
-While some configuration is available in `compose.yml` and `.env`, most config files and directories are found in the `omnisearch` dir.
-To locate it, look at your `compose.yml`.
+While some configuration is available in `compose.yaml` and `.env`, most config files and directories are found in the `omnisearch` dir.
+To locate it, look at your `compose.yaml`.
 By default, it should be in the same directory as the compose file:
 
-```yml
+```yaml
 volumes:
     - ./omnisearch:/etc/omnisearch:U
 ```
@@ -52,7 +52,7 @@ APP_NAME=OmniSearch
 
 ## Running
 
-Configure `compose.yml` and `.env` and run:
+Configure `compose.yaml` and `.env` and run:
 
 ```sh
 podman-compose up -d
