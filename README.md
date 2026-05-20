@@ -1,67 +1,56 @@
-This is a podman container made for omnisearch using:
+This is a Podman quadlet made for omnisearch using:
 
 1. [pasta](https://passt.top/passt/about/)
 2. [omnisearch](https://git.bwaaa.monster/omnisearch/about/)
 3. [beaker](https://git.bwaaa.monster/beaker/about/)
 
-# Usage
+## Usage
 
-## Install packages
+### Install packages
 
 Arch
 
 ```sh
-sudo pacman -S podman podman-compose passt
+sudo pacman -S podman passt
 ```
 
-## Building
+### Cloning
 
-Everything is automated, simply run:
-
+Quadlet has to be cloned in the right place in order for systemd to detect it:
 ```sh
-podman-compose build
+git clone --recurse https://github.com/nnra6864/omnisearch-podman ~/.config/containers/systemd/omnisearch
 ```
 
-This should take less than a minute
+### Configuring
 
-## Configuring
+While some configuration is available in `*.container` and `*.env` files, most config files and directories are found in the `data` dir.
 
-While some configuration is available in `compose.yaml` and `.env`, most config files and directories are found in the `omnisearch` dir.
-To locate it, look at your `compose.yaml`.
-By default, it should be in the same directory as the compose file:
-
-```yaml
-volumes:
-    - ./omnisearch:/etc/omnisearch:U
-```
-
-Keep in mind that all edits will require sudo, or simply switching to the podman user:
-
-```sh
-podman unshare
-```
-
-_When done, press `ctrl+d` to return to the previous user._
-
-### Env
+#### Env
 
 ```properties
-# This controls the text used in all the labels, as well as the tab name
+# Controls the text used in all the labels, as well as the tab name
 APP_NAME=OmniSearch
 ```
 
-## Running
+### Building and running
 
-Configure `compose.yaml` and `.env` and run:
+1. Remove old builds if found:
+    ```sh
+    podman rmi -f localhost/omnisearch:latest
+    ```
+2. Reload the daemon to get the latest service:
+    ```sh
+    systemctl --user daemon-reload
+    ```
+3. Build and start the service:
+    ```sh
+    systemctl --user start omnisearch.service
+    ```
+
+### Stopping
 
 ```sh
-podman-compose up -d
-```
-
-## Stopping
-
-```sh
-podman-compose down
+systemctl --user stop omnisearch.service
 ```
 
 # ☦ Ι̅Ϲ̅ Χ̅Ϲ̅ ΝΙΚΑ — Ὁ Ὤν
