@@ -38,18 +38,11 @@ APP_NAME=OmniSearch
 
 ### Building and running
 
-1. Remove old builds if found:
-    ```sh
-    podman rmi -f localhost/omnisearch:latest
-    ```
-2. Reload the daemon to get the latest service:
-    ```sh
-    systemctl --user daemon-reload
-    ```
-3. Build and start the service:
-    ```sh
-    systemctl --user start omnisearch.service
-    ```
+Reload the daemon and start the service:
+```sh
+systemctl --user daemon-reload
+systemctl --user start omnisearch.service
+```
 
 ### Stopping
 
