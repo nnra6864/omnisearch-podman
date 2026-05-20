@@ -1,4 +1,3 @@
-# omnisearch.container
 [Unit]
 Description=Omnisearch server
 After=network-online.target

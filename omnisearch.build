@@ -1,4 +1,3 @@
-# omnisearch.build
 [Build]
 ImageTag=localhost/omnisearch:latest
 File=./Containerfile
