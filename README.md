@@ -26,6 +26,11 @@ While some configuration is available in `*.env/container/network/volume/image/b
 
 #### Env
 
+Make sure to remove `.example` from all the `.env` files or the container won't start:
+```sh
+sh -c 'for f in *.env.example; do cp "$f" "${f%.example}"; done'
+```
+
 ```properties
 # Controls the text used in all the labels, as well as the tab name
 APP_NAME=OmniSearch
