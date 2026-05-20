@@ -12,8 +12,8 @@ EnvironmentFile=-./omnisearch.env
 Network=pasta
 PublishPort=8087:8087/tcp
 
-Volume=./omnisearch:/etc/omnisearch:Z,U
-Volume=./omnisearch_cache:/var/cache/omnisearch:Z,U
+Volume=./data/omnisearch:/etc/omnisearch:Z,U
+Volume=./cache/omnisearch:/var/cache/omnisearch:Z,U
 
 [Service]
 Restart=always
