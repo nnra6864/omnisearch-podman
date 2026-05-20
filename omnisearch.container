@@ -1,0 +1,22 @@
+# omnisearch.container
+[Unit]
+Description=Omnisearch server
+After=network-online.target
+
+[Container]
+ContainerName=omnisearch
+Image=omnisearch.build
+
+EnvironmentFile=omnisearch.env
+
+Network=pasta
+PublishPort=8087:8087/tcp
+
+Volume=./omnisearch:/etc/omnisearch:Z,U
+Volume=./omnisearch_cache:/var/cache/omnisearch:Z,U
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=default.target
