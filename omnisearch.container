@@ -7,7 +7,7 @@ After=network-online.target
 ContainerName=omnisearch
 Image=omnisearch.build
 
-EnvironmentFile=omnisearch.env
+EnvironmentFile=-./omnisearch.env
 
 Network=pasta
 PublishPort=8087:8087/tcp

@@ -1,3 +1,5 @@
-omnisearch.env
-omnisearch/
-omnisearch_cache/
+cache/
+config/
+data/
+database/
+*.env

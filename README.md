@@ -9,7 +9,6 @@ This is a Podman quadlet made for omnisearch using:
 ### Install packages
 
 Arch
-
 ```sh
 sudo pacman -S podman passt
 ```
@@ -23,7 +22,7 @@ git clone --recurse https://github.com/nnra6864/omnisearch-podman ~/.config/cont
 
 ### Configuring
 
-While some configuration is available in `*.container` and `*.env` files, most config files and directories are found in the `data` dir.
+While some configuration is available in `*.env/container/network/volume/image/build/kube` files, most configs can be found in mounted directories.
 
 #### Env
 
