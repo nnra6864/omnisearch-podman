@@ -44,6 +44,18 @@ systemctl --user daemon-reload
 systemctl --user start omnisearch.service
 ```
 
+### Updating
+
+1. Run the build service:
+```sh
+systemctl --user start omnisearch-build.service
+```
+
+2. Restart the service:
+```sh
+systemctl --user restart omnisearch.service
+```
+
 ### Stopping
 
 ```sh

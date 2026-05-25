@@ -5,6 +5,7 @@ After=network-online.target
 [Container]
 ContainerName=omnisearch
 Image=omnisearch.build
+AutoUpdate=local
 
 EnvironmentFile=omnisearch.env
 
