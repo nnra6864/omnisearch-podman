@@ -10,7 +10,7 @@ This is a Podman container made for omnisearch using:
 
 Arch
 ```sh
-sudo pacman -S podman passt
+sudo pacman -S podman docker-compose passt
 ```
 
 ### Cloning
@@ -38,7 +38,7 @@ APP_NAME=OmniSearch
 ### Building
 
 ```sh
-podman compose build
+podman compose build --no-cache
 ```
 
 ### Running
@@ -50,7 +50,7 @@ podman compose up -d
 ### Updating
 
 ```sh
-podman compose down; podman compose build && podman compose up -d
+podman compose down; podman compose build --no-cache && podman compose up -d
 ```
 
 ### Stopping
