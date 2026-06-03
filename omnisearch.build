@@ -1,5 +1,0 @@
-[Build]
-ImageTag=localhost/omnisearch:latest
-File=./Containerfile
-SetWorkingDirectory=unit
-PodmanArgs=--no-cache
