@@ -5,8 +5,8 @@ services:
         ports:
             - "8087:8087/tcp"
         volumes:
-            - ./omnisearch:/etc/omnisearch:U
-            - ./omnisearch_cache:/var/cache/omnisearch:U
+            - ./data/omnisearch:/etc/omnisearch:Z,U
+            - ./cache/omnisearch:/var/cache/omnisearch:Z,U
         restart: always
         env_file:
             - .env
