@@ -5,6 +5,6 @@ database/
 *.env
 .git
 .gitignore
-Containerfile
+Dockerfile
 LICENSE
 README.md
