@@ -12,22 +12,22 @@ RUN apk add --no-cache libxml2 libcurl openssl shadow && \
     addgroup -S omnisearch && adduser -S -G omnisearch omnisearch
 
 COPY --from=builder /build/omnisearch/bin/omnisearch /usr/bin/omnisearch
-COPY --from=builder /build/omnisearch /etc/omnisearch-defaults
+COPY --from=builder /build/omnisearch /etc/omnisearch
 COPY --from=builder /usr/lib/libbeaker.so /usr/lib/libbeaker.so
 
-RUN mkdir -p /etc/omnisearch /var/cache/omnisearch && \
-    chown -R omnisearch:omnisearch /etc/omnisearch /etc/omnisearch-defaults /var/cache/omnisearch
+RUN mkdir -p /etc/omnisearch/config /var/cache/omnisearch && \
+    chown -R omnisearch:omnisearch /etc/omnisearch /var/cache/omnisearch
 
 RUN <<'EOF' cat > /entrypoint.sh && chmod +x /entrypoint.sh
 #!/bin/sh
 set -e
 
-if [ ! -f /etc/omnisearch/config.ini ]; then
-    echo "No config found, initializing from defaults..."
-    cp -r /etc/omnisearch-defaults/. /etc/omnisearch/
-    cp /etc/omnisearch-defaults/example-config.ini /etc/omnisearch/config.ini
-    sed -i "s|#dir = /tmp/omnisearch_cache|dir = /var/cache/omnisearch|" /etc/omnisearch/config.ini
+if [ ! -f /etc/omnisearch/config/config.ini ]; then
+    echo "No config found on host. Copying the example..."
+    cp /etc/omnisearch/example-config.ini /etc/omnisearch/config/config.ini
 fi
+
+ln -sf /etc/omnisearch/config/config.ini /etc/omnisearch/config.ini
 
 if [ -n "$APP_NAME" ]; then
     echo "Setting app name to $APP_NAME..."
@@ -52,7 +52,6 @@ exec "$@"
 EOF
 
 WORKDIR /etc/omnisearch
-USER omnisearch
 EXPOSE 8087
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["omnisearch"]
