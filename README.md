@@ -1,4 +1,4 @@
-This is a Podman quadlet made for omnisearch using:
+This is a Podman container made for omnisearch using:
 
 1. [pasta](https://passt.top/passt/about/)
 2. [omnisearch](https://git.bwaaa.monster/omnisearch/about/)
@@ -15,14 +15,13 @@ sudo pacman -S podman passt
 
 ### Cloning
 
-Quadlet has to be cloned in the right place in order for systemd to detect it:
 ```sh
-git clone --recurse https://github.com/nnra6864/omnisearch-podman ~/.config/containers/systemd/omnisearch
+git clone --recurse https://github.com/nnra6864/omnisearch-podman
 ```
 
 ### Configuring
 
-While some configuration is available in `*.env/container/network/volume/image/build/kube` files, most configs can be found in mounted directories.
+While some configuration is available in `*.env` files, most configs can be found in mounted directories.
 
 #### Env
 
@@ -36,30 +35,28 @@ sh -c 'for f in *.env.example; do cp "$f" "${f%.example}"; done'
 APP_NAME=OmniSearch
 ```
 
-### Building and running
+### Building
 
-Reload the daemon and start the service:
 ```sh
-systemctl --user daemon-reload
-systemctl --user start omnisearch.service
+podman compose build
+```
+
+### Running
+
+```sh
+podman compose up -d
 ```
 
 ### Updating
 
-1. Run the build service:
 ```sh
-systemctl --user start omnisearch-build.service
-```
-
-2. Restart the service:
-```sh
-systemctl --user restart omnisearch.service
+podman compose down; podman compose build && podman compose up -d
 ```
 
 ### Stopping
 
 ```sh
-systemctl --user stop omnisearch.service
+podman compose down
 ```
 
 # ☦ Ι̅Ϲ̅ Χ̅Ϲ̅ ΝΙΚΑ — Ὁ Ὤν
