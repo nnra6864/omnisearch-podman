@@ -10,7 +10,7 @@ This is a Podman container made for omnisearch using:
 
 Arch
 ```sh
-sudo pacman -S podman docker-compose passt
+sudo pacman -S podman passt
 ```
 
 ### Cloning
