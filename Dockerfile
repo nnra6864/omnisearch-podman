@@ -38,7 +38,7 @@ if [ -n "$APP_NAME" ]; then
     fi
 
     find /etc/omnisearch/templates /etc/omnisearch/static \
-        -type f | xargs sed -i \
+        -type f -print0 | xargs -0 sed -i \
         -e "s/Omni<span>Search<\/span>/$APP_NAME/g" \
         -e "s/omni<span>search<\/span>/$APP_NAME/g" \
         -e "s/OmniSearch/$APP_NAME/g" \
